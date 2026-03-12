@@ -20,17 +20,22 @@ border-radius:12px;
 }
 
 button{
-padding:10px;
-margin:6px;
+padding:10px 20px;
+margin:10px;
 cursor:pointer;
 border:none;
 border-radius:6px;
+font-size:16px;
 }
 
 #timer{
 font-size:18px;
 color:#ffcc00;
 margin-bottom:10px;
+}
+
+#quiz{
+display:none;
 }
 </style>
 
@@ -40,7 +45,22 @@ margin-bottom:10px;
 
 <div class="box">
 
+<div id="start">
+
 <h2>🕌 Eid Salami Quiz</h2>
+
+<p>
+10 quiz 50 second so er beshi hoye gele salami count hobe na🥳  
+tai apner watch er dike ektu lokkho rakhben  
+Thank uh
+</p>
+
+<button onclick="startQuiz()">Quiz Started</button>
+
+</div>
+
+
+<div id="quiz">
 
 <div id="timer">Time: 5</div>
 
@@ -55,6 +75,8 @@ margin-bottom:10px;
 <p>
 Redwanul ke apner salamir screenshot ti pathan 🙂
 </p>
+
+</div>
 
 </div>
 
@@ -89,6 +111,15 @@ let questions=[
 {q:"Which question can you never answer yes to?",a:["Are you sleeping?","Are you alive?","Are you ready?"],c:0}
 
 ];
+
+function startQuiz(){
+
+document.getElementById("start").style.display="none";
+document.getElementById("quiz").style.display="block";
+
+load();
+
+}
 
 function startTimer(){
 
@@ -193,8 +224,6 @@ document.getElementById("timer").innerText="";
 }
 
 }
-
-load();
 
 </script>
 
