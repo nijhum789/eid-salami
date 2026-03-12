@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Eid Salami Quiz</title>
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#f2f2f2;
+}
+.box{
+background:white;
+width:320px;
+margin:50px auto;
+padding:20px;
+border-radius:10px;
+}
+button{
+padding:10px;
+margin:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Eid Salami Quiz</h2>
+
+<p id="question"></p>
+
+<div id="answers"></div>
+
+<h3>Balance: ৳<span id="money">0</span></h3>
+
+<input id="bkash" placeholder="Enter bKash Number">
+
+<br><br>
+
+<button onclick="requestSalami()">Request Salami</button>
+
+</div>
+
+<script>
+
+let money=0;
+let index=0;
+
+let questions=[
+{q:"2+2=?",a:["3","4","5"],c:1},
+{q:"Bangladesh capital?",a:["Dhaka","Barisal","Khulna"],c:0},
+{q:"3x3=?",a:["6","9","12"],c:1},
+{q:"Sun rises in?",a:["East","West","North"],c:0},
+{q:"10-5=?",a:["3","5","7"],c:1},
+{q:"5x2=?",a:["10","12","15"],c:0},
+{q:"Water color?",a:["Blue","Red","Black"],c:0},
+{q:"Earth shape?",a:["Round","Flat","Square"],c:0},
+{q:"6+4=?",a:["10","8","9"],c:0},
+{q:"Bangladesh flag?",a:["Green Red","Blue Yellow","Black"],c:0}
+];
+
+function load(){
+let q=questions[index];
+
+document.getElementById("question").innerText=q.q;
+
+let html="";
+
+q.a.forEach((a,i)=>{
+html+=`<button onclick="check(${i})">${a}</button><br>`;
+});
+
+document.getElementById("answers").innerHTML=html;
+}
+
+function check(i){
+
+if(i==questions[index].c){
+money+=100;
+document.getElementById("money").innerText=money;
+}
+
+index++;
+
+if(index<questions.length){
+load();
+}else{
+document.getElementById("question").innerText="Quiz Finished!";
+document.getElementById("answers").innerHTML="";
+}
+
+}
+
+function requestSalami(){
+
+let number=document.getElementById("bkash").value;
+
+alert("Salami Request Sent 😁\nAmount: "+money+"\nbKash: "+number);
+
+}
+
+load();
+
+</script>
+
+</body>
+</html>
