@@ -7,27 +7,30 @@
 body{
 font-family:Arial;
 text-align:center;
-background:#f2f2f2;
+background:linear-gradient(45deg,#0f2027,#203a43,#2c5364);
+color:white;
 }
 
 .box{
-background:white;
-width:320px;
-margin:50px auto;
+background:rgba(0,0,0,0.7);
+width:330px;
+margin:80px auto;
 padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
+border-radius:12px;
 }
 
 button{
 padding:10px;
-margin:5px;
+margin:6px;
 cursor:pointer;
+border:none;
+border-radius:6px;
 }
 
-input{
-padding:8px;
-width:80%;
+#salami{
+margin-top:15px;
+font-size:14px;
+color:#ffd700;
 }
 </style>
 
@@ -37,21 +40,19 @@ width:80%;
 
 <div class="box">
 
-<h2>🕌 Eid Salami Quiz</h2>
+<h2>🕌 Eid Mubarak Quiz</h2>
 
 <p id="question"></p>
 
 <div id="answers"></div>
 
-<h3>Balance: ৳<span id="money">0</span></h3>
+<h3>Salami: ৳<span id="money">0</span></h3>
 
 <p>Wrong: <span id="wrong">0</span>/3</p>
 
-<input id="bkash" placeholder="Enter bKash Number">
-
-<br><br>
-
-<button onclick="requestSalami()">Request Salami</button>
+<p id="salami">
+Redwanul ke apner ei salamir request ti pathan 🙂
+</p>
 
 </div>
 
@@ -62,16 +63,27 @@ let index=0;
 let wrong=0;
 
 let questions=[
-{q:"What comes once in a minute, twice in a moment, but never in a thousand years?",a:["Letter M","Letter A","Letter E"],c:0},
-{q:"Which number is missing? 2, 6, 7, 21, 22, ?",a:["44","66","23"],c:1},
-{q:"If 3 cats catch 3 mice in 3 minutes, how many cats catch 100 mice in 100 minutes?",a:["3","100","33"],c:0},
-{q:"Which month has 28 days?",a:["February","All months","Only leap year"],c:1},
-{q:"If you overtake the person in 2nd place, what place are you in?",a:["1st","2nd","3rd"],c:1},
-{q:"What has keys but can't open locks?",a:["Keyboard","Map","Clock"],c:0},
-{q:"What goes up but never comes down?",a:["Age","Balloon","Smoke"],c:0},
-{q:"Which weighs more: 1kg cotton or 1kg iron?",a:["Cotton","Iron","Same"],c:2},
-{q:"If a plane crashes on the border of USA and Canada, where are the survivors buried?",a:["USA","Canada","They aren't buried"],c:2},
-{q:"How many months have 31 days?",a:["5","7","8"],c:1}
+
+{q:"If you throw a red stone into the blue sea, what will it become?",a:["Wet","Blue","Heavy"],c:0},
+
+{q:"Which word is always spelled incorrectly?",a:["Incorrectly","Wrong","Error"],c:0},
+
+{q:"What can travel around the world while staying in the same corner?",a:["Stamp","Shadow","Wind"],c:0},
+
+{q:"How many animals did Moses take on the ark?",a:["2","None","All"],c:1},
+
+{q:"Which number comes next? 1, 11, 21, 1211, 111221, ?",a:["312211","111222","221113"],c:0},
+
+{q:"If you have it, you want to share it. If you share it, you don't have it. What is it?",a:["Secret","Money","Time"],c:0},
+
+{q:"What has a neck but no head?",a:["Bottle","River","Tree"],c:0},
+
+{q:"What gets bigger the more you take away?",a:["Hole","Balloon","Shadow"],c:0},
+
+{q:"Which weighs more: a ton of feathers or a ton of bricks?",a:["Feathers","Bricks","Same"],c:2},
+
+{q:"If a rooster lays an egg on the roof, which way does it roll?",a:["Left","Right","Roosters don't lay eggs"],c:2}
+
 ];
 
 function load(){
@@ -124,14 +136,6 @@ document.getElementById("question").innerText="🎉 Quiz Finished!";
 document.getElementById("answers").innerHTML="";
 
 }
-
-}
-
-function requestSalami(){
-
-let number=document.getElementById("bkash").value;
-
-alert("Eid Salami Request Sent 😁\nAmount: "+money+"\nbKash: "+number);
 
 }
 
