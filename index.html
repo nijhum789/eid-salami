@@ -2,37 +2,50 @@
 <html>
 <head>
 <title>Eid Salami Quiz</title>
+
 <style>
 body{
 font-family:Arial;
 text-align:center;
 background:#f2f2f2;
 }
+
 .box{
 background:white;
 width:320px;
 margin:50px auto;
 padding:20px;
 border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
+
 button{
 padding:10px;
 margin:5px;
+cursor:pointer;
+}
+
+input{
+padding:8px;
+width:80%;
 }
 </style>
+
 </head>
 
 <body>
 
 <div class="box">
 
-<h2>Eid Salami Quiz</h2>
+<h2>🕌 Eid Salami Quiz</h2>
 
 <p id="question"></p>
 
 <div id="answers"></div>
 
 <h3>Balance: ৳<span id="money">0</span></h3>
+
+<p>Wrong: <span id="wrong">0</span>/3</p>
 
 <input id="bkash" placeholder="Enter bKash Number">
 
@@ -46,21 +59,23 @@ margin:5px;
 
 let money=0;
 let index=0;
+let wrong=0;
 
 let questions=[
-{q:"2+2=?",a:["3","4","5"],c:1},
-{q:"Bangladesh capital?",a:["Dhaka","Barisal","Khulna"],c:0},
-{q:"3x3=?",a:["6","9","12"],c:1},
-{q:"Sun rises in?",a:["East","West","North"],c:0},
-{q:"10-5=?",a:["3","5","7"],c:1},
-{q:"5x2=?",a:["10","12","15"],c:0},
-{q:"Water color?",a:["Blue","Red","Black"],c:0},
-{q:"Earth shape?",a:["Round","Flat","Square"],c:0},
-{q:"6+4=?",a:["10","8","9"],c:0},
-{q:"Bangladesh flag?",a:["Green Red","Blue Yellow","Black"],c:0}
+{q:"What comes once in a minute, twice in a moment, but never in a thousand years?",a:["Letter M","Letter A","Letter E"],c:0},
+{q:"Which number is missing? 2, 6, 7, 21, 22, ?",a:["44","66","23"],c:1},
+{q:"If 3 cats catch 3 mice in 3 minutes, how many cats catch 100 mice in 100 minutes?",a:["3","100","33"],c:0},
+{q:"Which month has 28 days?",a:["February","All months","Only leap year"],c:1},
+{q:"If you overtake the person in 2nd place, what place are you in?",a:["1st","2nd","3rd"],c:1},
+{q:"What has keys but can't open locks?",a:["Keyboard","Map","Clock"],c:0},
+{q:"What goes up but never comes down?",a:["Age","Balloon","Smoke"],c:0},
+{q:"Which weighs more: 1kg cotton or 1kg iron?",a:["Cotton","Iron","Same"],c:2},
+{q:"If a plane crashes on the border of USA and Canada, where are the survivors buried?",a:["USA","Canada","They aren't buried"],c:2},
+{q:"How many months have 31 days?",a:["5","7","8"],c:1}
 ];
 
 function load(){
+
 let q=questions[index];
 
 document.getElementById("question").innerText=q.q;
@@ -72,22 +87,42 @@ html+=`<button onclick="check(${i})">${a}</button><br>`;
 });
 
 document.getElementById("answers").innerHTML=html;
+
 }
 
 function check(i){
 
 if(i==questions[index].c){
+
 money+=100;
 document.getElementById("money").innerText=money;
+
+}else{
+
+wrong++;
+document.getElementById("wrong").innerText=wrong;
+
+}
+
+if(wrong>=3){
+
+document.getElementById("question").innerText="❌ Too many wrong answers!";
+document.getElementById("answers").innerHTML="";
+return;
+
 }
 
 index++;
 
 if(index<questions.length){
+
 load();
+
 }else{
-document.getElementById("question").innerText="Quiz Finished!";
+
+document.getElementById("question").innerText="🎉 Quiz Finished!";
 document.getElementById("answers").innerHTML="";
+
 }
 
 }
@@ -96,7 +131,7 @@ function requestSalami(){
 
 let number=document.getElementById("bkash").value;
 
-alert("Salami Request Sent 😁\nAmount: "+money+"\nbKash: "+number);
+alert("Eid Salami Request Sent 😁\nAmount: "+money+"\nbKash: "+number);
 
 }
 
