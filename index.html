@@ -13,7 +13,7 @@ color:white;
 
 .box{
 background:rgba(0,0,0,0.7);
-width:330px;
+width:340px;
 margin:80px auto;
 padding:20px;
 border-radius:12px;
@@ -29,8 +29,8 @@ font-size:16px;
 }
 
 #timer{
-font-size:18px;
-color:#ffcc00;
+font-size:20px;
+color:#ffd700;
 margin-bottom:10px;
 }
 
@@ -50,19 +50,20 @@ display:none;
 <h2>🕌 Eid Salami Quiz</h2>
 
 <p>
-10 quiz 50 second so er beshi hoye gele salami count hobe na🥳  
-tai apner watch er dike ektu lokkho rakhben  
-Thank uh
+There will be 10 quizzes of 100 seconds each.  
+If you exceed 10 seconds per quiz, the quiz will not count.  
+So please keep an eye on your watch.  
+<br><br>
+Thank you 🤝
 </p>
 
 <button onclick="startQuiz()">Quiz Started</button>
 
 </div>
 
-
 <div id="quiz">
 
-<div id="timer">Time: 5</div>
+<div id="timer">Time: 10</div>
 
 <p id="question"></p>
 
@@ -72,9 +73,7 @@ Thank uh
 
 <p>Wrong: <span id="wrong">0</span>/3</p>
 
-<p>
-Redwanul ke apner salamir screenshot ti pathan 🙂
-</p>
+<p>Redwanul ke apner salamir screenshot ti pathan 🙂</p>
 
 </div>
 
@@ -85,7 +84,7 @@ Redwanul ke apner salamir screenshot ti pathan 🙂
 let money=0;
 let index=0;
 let wrong=0;
-let time=5;
+let time=10;
 let timer;
 
 let questions=[
@@ -113,17 +112,14 @@ let questions=[
 ];
 
 function startQuiz(){
-
 document.getElementById("start").style.display="none";
 document.getElementById("quiz").style.display="block";
-
 load();
-
 }
 
 function startTimer(){
 
-time=5;
+time=10;
 
 document.getElementById("timer").innerText="Time: "+time;
 
